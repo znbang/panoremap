@@ -10,8 +10,9 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+
 	"golang.org/x/text/encoding/traditionalchinese"
-    "golang.org/x/text/transform"
+	"golang.org/x/text/transform"
 )
 
 func getImageSize(srcPath string) (width int, height int, err error) {
@@ -50,7 +51,7 @@ func createScript(scriptPath string, srcPath string, width int, height int, yaw 
 
 	_, err = fmt.Fprintf(out, "p w%d h%d f2 v360 u0 n\"JPEG q100 g0\"\n", width, height)
 	_, err = fmt.Fprintf(out, "o y%d p%d r%d f4 v360 n\"%s\"\n", yaw, pitch, roll, srcPath)
-	
+
 	return err
 }
 
@@ -89,7 +90,7 @@ func main() {
 	fmt.Println("PanoRemap is a front end for PTStitcherNG.")
 	fmt.Println("PTStitcherNG Copyright (c) 2008 2009 2010 Helmut Dersch.")
 	fmt.Println("All rights reserved.")
-	
+
 	if len(os.Args) != 2 {
 		fmt.Printf("Usage: %s filename.jpg\n", os.Args[0])
 		return
@@ -100,7 +101,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	
+
 	srcPath := os.Args[1]
 	ext := filepath.Ext(srcPath)
 	remapExt := "_remap" + ext
